@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/style.css" rel="stylesheet">
+    <title>Creative Dev Test</title>
+  </head>
+  <body>
+    <canvas class="webgl"></canvas>
+    <div class="htmlContent">
+      <!---------------------------------------- Loading ----------------------------------------------->
+      <div class="loading">
+        <div class="loading__bar"></div>
+        <div class="loading__progress">
+          <span class="loading__progress__number">0</span>
+          <span class="loading__progress__percent">%</span>
+        </div>
+      </div>
+      <!--------------------------------------- Nav Items ---------------------------------------------->
+      <nav class="nav">
+        <ul class="nav__list">
+          <li class="nav__item nav__item--active">
+            <span class="nav__item__num">1</span>
+            <div class="nav__item__svg"></div>
+          </li>
+          <li class="nav__item">
+            <span class="nav__item__num">2</span>
+            <div class="nav__item__svg"></div>
+          </li>
+          <li class="nav__item">
+            <span class="nav__item__num">3</span>
+            <div class="nav__item__svg"></div>
+          </li>
+        </ul>
+      </nav>
+      <!--------------------------------------- Hero Text ---------------------------------------------->
+      <div class="heroText">
+        <h2 class="heading">
+          <span class="heading__wrapper">
+            <span class="heading__line">Creative people </span>
+            <span class="heading__line">live longer.</span>
+          </span>
+        </h2>
+        <p class="paragraph">
+          <span class="paragraph__wrapper"
+            >Due to their openness, creative minds tend to live longer, and may
+            even get more creative with age. Creative people react to stress,
+            often seeing obstacles as something to be overcome rather than a
+            barrier which can’t be breached.
+          </span>
+        </p>
+      </div>
+    </div>
+    <script type="module" src="/three.js"></script>
+    <script type="module" src="/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,226 @@
+@font-face {
+  font-family: AftenScreen;
+  src: url("./assets/font/Aften Screen.ttf") format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+  pointer-events: none;
+  z-index: -1;
+}
+.htmlContent {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: AftenScreen, sans-serif;
+  z-index: 1;
+  color: #00347d;
+  background-color: transparent !important;
+}
+/***************************************** Loading ***************************************************/
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: #00347d;
+  color: #ffa0a0;
+  transition: top 0.7s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.loading--loaded {
+  transition: top 0.7s ease-in-out;
+  top: -110%;
+  pointer-events: none;
+}
+
+.loading__bar {
+  width: 250px;
+  height: 4px;
+  background: #ffa0a0;
+  transform: scaleX(0);
+  transform-origin: top left;
+  transition: transform 0.8s ease-out;
+  will-change: transform;
+}
+.loading__progress {
+  width: 250px;
+  font-weight: bold;
+
+}
+.loading__progress__number {
+  height: auto;
+  text-align: left;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+
+
+} 
+
+/***************************************** Nav Items ***************************************************/
+
+.nav {
+  width: 25%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+.nav__list {
+  width: 30%;
+  height: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  list-style: none;
+  position: absolute;
+}
+
+.nav__item {
+  width: 5rem;
+  height: 5rem;
+  cursor: pointer;
+  position: relative;
+
+}
+.nav__item--active {
+  color: #ffa0a0;
+
+}
+
+.nav__item__num {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;  
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  -webkit-user-select: none; /* Safari */
+  user-select: none;
+}
+.nav__item__num:hover {
+  font-weight: bold;
+}
+.nav__item__svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0; 
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: scale(0) rotate(45deg);
+  will-change: transform;
+  transition: transform 0.3s ease-out;
+}
+.nav__item--active .nav__item__svg {
+  transform: scale(1) rotate(0deg);
+} 
+.nav__item:first-of-type .nav__item__svg {
+  background-image: url('./assets/svgs/circle.svg');
+}
+.nav__item:nth-of-type(2) .nav__item__svg {
+  background-image: url('./assets/svgs/square.svg');
+}
+.nav__item:last-of-type .nav__item__svg {
+  background-image: url('./assets/svgs/triangle.svg');
+}
+
+/***************************************** Hero Text ***************************************************/
+.heroText {
+  position: absolute;
+  top: 25%;
+  left: 7%;
+  
+  -webkit-user-select: none; /* Safari */
+  user-select: none;
+}
+.heading {
+  font-size: 5vw;
+  font-weight: normal;
+
+}
+.heading__wrapper {
+  overflow: hidden;
+  display: inline-block;
+}
+.heading__line {
+  display: block;
+  overflow: hidden;
+
+}
+.letter {
+  display: inline-block;
+  will-change: transform;
+}
+.paragraph {
+  width: 29%;
+  margin-top: 20px;
+}
+.paragraph__wrapper {
+  overflow: hidden;
+  display: inline-block;
+  will-change: transform, opacity;
+
+}
+
+/***************************************** Media Query ***************************************************/
+@media screen and (max-width: 767px) {
+  .nav {
+    width: 100%;
+    height: 15%;
+  }
+  .nav__list {
+    width: 90%;
+    height: 90%;
+    flex-direction: row;
+  }
+  .nav__item {
+    width: 4rem;
+    height: 4rem;
+  }
+
+
+  .heroText {
+    top: 15%;
+    left: 5%;
+  }
+  .heading {
+    font-size: 3rem;
+
+  }
+  .paragraph {
+    width: 90%;
+    margin-top: 0;
+    position: fixed;
+    left: 5%;
+    bottom: 5%;
+    top: auto;
+
+  }
+}
