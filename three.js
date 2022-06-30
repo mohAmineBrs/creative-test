@@ -52,7 +52,7 @@ const loadingManager = new THREE.LoadingManager(
 
     setTimeout(() => {
       loading.classList.add('loading--loaded')
-    }, 400);
+    }, 500);
  },
  // Progress
  (itemUrl, itemsLoaded, itemsTotal) => {
@@ -99,9 +99,15 @@ renderer.setAnimationLoop( animation );
  */
 const textureLoader = new THREE.TextureLoader(loadingManager)
 
-const texture1 = textureLoader.load('./assets/images/IMG_01.jpg')
-const texture2 = textureLoader.load('./assets/images/IMG_02.jpg')
-const texture3 = textureLoader.load('./assets/images/IMG_03.jpg')
+const texture1 = textureLoader.load('./assets/images/IMG_01.jpg', () => {
+  texture1.needsUpdate = true
+})
+const texture2 = textureLoader.load('./assets/images/IMG_02.jpg', () => {
+  texture2.needsUpdate = true
+})
+const texture3 = textureLoader.load('./assets/images/IMG_03.jpg', () => {
+  texture3.needsUpdate = true
+})
 
 
 
