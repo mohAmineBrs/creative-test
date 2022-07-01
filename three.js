@@ -4,6 +4,7 @@ import fragmentShader from "./shaders/fragmentShader.glsl";
 import anime from "animejs"
 
 
+
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
 
@@ -99,17 +100,6 @@ renderer.setAnimationLoop( animation );
  */
 const textureLoader = new THREE.TextureLoader(loadingManager)
 
-const texture1 = textureLoader.load('./assets/images/IMG_01.jpg', () => {
-  texture1.needsUpdate = true
-})
-const texture2 = textureLoader.load('./assets/images/IMG_02.jpg', () => {
-  texture2.needsUpdate = true
-})
-const texture3 = textureLoader.load('./assets/images/IMG_03.jpg', () => {
-  texture3.needsUpdate = true
-})
-
-
 
 /**
  * Plane Geometry And Material
@@ -120,9 +110,7 @@ const material = new THREE.ShaderMaterial({
   fragmentShader,
   side: THREE.DoubleSide,
   uniforms: {
-    uTexture1: { value: texture1 },
-    uTexture2: { value: texture2 },
-    uTexture3: { value: texture3 },
+    uTexture: { value: null},
     uCurrentItem: { value: 0 },
     uTime: { value: 0 },
     uWaveSpeed: { value: 2 },
@@ -171,16 +159,18 @@ const material = new THREE.ShaderMaterial({
 })
 
 
- /**
-  * Create Planes
-  */
+
+/**
+ * Create Planes
+ */
 
 let plane
 const creatingPlane = () => {
+
   navItems.forEach((itm, i) => {
     let mat = material.clone();
+    mat.uniforms.uTexture.value = textureLoader.load(`./assets/images/IMG_0${i+1}.jpg`);
     matArray.push(mat);
-    mat.uniforms.uCurrentItem.value = i;
 
     plane = new THREE.Mesh(geometry, mat);
     meshGroup.rotation.set(-0.35, -0.45, -0.2);
@@ -302,6 +292,7 @@ window.addEventListener('mousemove', (e) => {
  */
 function animation(time) {
   const elapsedTime = time/1500;
+
 
   offset.x = lerp(offset.x, mouse.x, 0.1);
   offset.y = lerp(offset.y, mouse.y, 0.1);
