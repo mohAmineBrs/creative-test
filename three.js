@@ -169,7 +169,7 @@ const creatingPlane = () => {
 
   navItems.forEach((itm, i) => {
     let mat = material.clone();
-    mat.uniforms.uTexture.value = textureLoader.load(`./assets/images/IMG_0${i+1}.jpg`);
+    mat.uniforms.uTexture.value = textureLoader.load(`assets/images/IMG_0${i+1}.jpg`);
     matArray.push(mat);
 
     plane = new THREE.Mesh(geometry, mat);
